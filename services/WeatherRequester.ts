@@ -1,12 +1,11 @@
 import axios, {AxiosResponse} from "axios";
-import {WeatherData} from "./api";
+import {WeatherData} from "../pages/api/city";
 export default async function getWeather(city: string): Promise<WeatherData | null> {
     try {
         // @ts-ignore
-        const response: AxiosResponse<WeatherData> = await axios.post(`api/api`,{body:`${city}`});
+        const response: AxiosResponse<WeatherData> = await axios.post(`api/city`,{body:`${city}`});
         return response.data;
     } catch (error) {
-        console.error("aax-",error);
         // @ts-ignore
         return {
             cityName: city,

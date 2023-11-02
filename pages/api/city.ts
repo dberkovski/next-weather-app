@@ -1,7 +1,7 @@
 import {NextApiRequest, NextApiResponse} from 'next';
 import axios, {AxiosResponse} from 'axios';
 // @ts-ignore
-import getWeather, {UnsplashResponse, WeatherData} from "./weatherApi";
+import getWeather, {UnsplashResponse, WeatherData} from "../../services/WeatherRequester";
 import {localTimeConverter} from "../../services/converters";
 
 type ResponseData = {
@@ -29,7 +29,7 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<ResponseData[]>
 ) {
-    console.log("gelen body-", req.body)
+    console.log("seçilen Şehir: ", req.body.body)
     try {
         const city = req.body.body;
         const response: AxiosResponse<WeatherData> = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.API_WEATHER_KEY}&units=metric&lang=tr`);
@@ -74,7 +74,6 @@ export default async function handler(
             weatherData.error = true;
             weatherData.errorText = "ImageApi token hatalı veya servise ulaşılamadı , arka fona resim eklenemedi.";
         }
-
         // @ts-ignore
         res.status(200).json(weatherData);
     } catch (error) {
