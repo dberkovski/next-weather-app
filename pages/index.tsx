@@ -8,7 +8,7 @@ const Home: NextPage = () => {
             <Head>
                 <title>Weather App</title>
                 <meta name="description" content="Next Weather App" />
-                <link rel="icon" href="/favicon.ico" />
+                <link rel="icon" href="/weather-icon.svg" />
             </Head>
             <MainMapComponent/>
         </div>

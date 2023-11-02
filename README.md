@@ -8,10 +8,7 @@
 3) Add new "env.local" file and write your own  OpenWeatherApi and PexelApi keys like ".env.example" file.
 ## Getting Started
 
-First, go to w-app folder and install dependencies:
-```bash
-cd w-app
-```
+First,  install dependencies:
 
 ```bash
 npm install
